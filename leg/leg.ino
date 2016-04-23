@@ -23,7 +23,7 @@ void loop() {
   int sensorread = analogRead (sensor);
 //  Serial.println(sensorread);
 
-  if (sensorread > 400){
+  if (sensorread > 200){
     sstr = String(sensorread);
     sstr.toCharArray(sdata, 4);
 

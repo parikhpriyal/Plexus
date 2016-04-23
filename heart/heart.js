@@ -1,6 +1,6 @@
 var net = require('net');
-var HOST = '192.168.1.102';
-var PORT = 6994;
+var HOST = 'IP ADDRESS';
+var PORT = PORT NUMBER;
 
 var client = new net.Socket();
 
@@ -13,11 +13,10 @@ client.connect(PORT, HOST, function() {
 
 
     console.log('CONNECTED TO: ' + HOST + ':' + PORT);
-    bled.writeSync(1);
     
     pump();
     
-    client.write('I am Bruce Lee!');
+    client.write('Plexus in process...');
 
 	client.on('data', function(data) {
 	    console.log('DATA: ' + data);
@@ -27,15 +26,15 @@ client.connect(PORT, HOST, function() {
 
 
 function light(){
-	iv = setInterval(function () {
+	var iv = setInterval(function () {
   		bled.writeSync(bled.readSync() ^ 1); 
-	}, 200);
+	}, 300);
 
 	setTimeout(function () {
 		clearInterval(iv); 
 		bled.writeSync(1);  
-		// bled.unexport();    
-	}, 5000);
+		// bled.writeSync(0);    
+	}, 3000);
 }
 
 function pump(){
@@ -44,7 +43,7 @@ function pump(){
 	}, 400);
 
 	setTimeout(function () {
-		clearInterval(iv); 
-		rled.writeSync(0);  
+		// clearInterval(iv); 
+		rled.writeSync(1);  
 	}, 5000);
 }
