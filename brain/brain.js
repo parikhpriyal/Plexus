@@ -47,11 +47,12 @@ net.createServer( function (sock) {
         if('a' === data_array[0]){
           console.log("Impulse from hand");
           console.log("Response to heart");
-          sock.write('Impulse via brain');
+          sock.write('Impulse from hand via brain');
         }
         else if('c' === data_array[0]){
           console.log("Impulse from foot");
           console.log("Response to mouth");
+          sock.write('Impulse from foot via brain');
         }
 
         // blink(5);
